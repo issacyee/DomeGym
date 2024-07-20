@@ -9,6 +9,10 @@ import java.util.Objects;
 public class ParticipantFactory {
     private ParticipantFactory() {}
 
+    public static Participant createParticipant() {
+        return createParticipant(null, null);
+    }
+
     public static Participant createParticipant(Long id, Long userId) {
         if (Objects.isNull(id)) {
             id = IdGenerator.generateId();

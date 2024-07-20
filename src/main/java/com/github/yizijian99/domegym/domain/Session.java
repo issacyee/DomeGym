@@ -1,41 +1,54 @@
 package com.github.yizijian99.domegym.domain;
 
-import com.github.yizijian99.domegym.utils.id.IdGenerator;
+import lombok.Builder;
 import lombok.Data;
-import org.apache.commons.collections4.CollectionUtils;
 
+import java.time.Duration;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 @Data
+@Builder
 public class Session {
-    private Long sessionId;
+    private Long id;
 
     private Long trainerId;
 
+    @Builder.Default
     private List<Long> participantIds = new ArrayList<>(0);
 
     private Integer maxParticipants;
 
-    public Session(Integer maxParticipants, Long trainerId) {
-        this(maxParticipants, trainerId, null);
-    }
+    private LocalDate date;
 
-    public Session(Integer maxParticipants, Long trainerId, Long sessionId) {
-        this.maxParticipants = maxParticipants;
-        if (Objects.isNull(sessionId)) {
-            sessionId = IdGenerator.generateId();
-        }
-        this.trainerId = trainerId;
-        this.sessionId = sessionId;
-    }
+    private LocalTime startTime;
+
+    private LocalTime endTime;
 
     public void reserveSpot(Participant participant) {
-        if (CollectionUtils.size(participantIds) >= maxParticipants) {
+        if (participantIds.size() >= maxParticipants) {
             throw new RuntimeException("Cannot have more reservations than participants.");
         }
 
         participantIds.add(participant.getId());
+    }
+
+    public void cancelReservation(Participant participant, IDateTimeProvider dateTimeProvider) {
+        // session time - current time < 24 hours
+        if (isTooCloseSession(dateTimeProvider.getUtcNow())) {
+            throw new RuntimeException("Cannot cancel reservation too close to session");
+        }
+
+        if (!participantIds.remove(participant.getId())) {
+            throw new RuntimeException("Reservation not found");
+        }
+    }
+
+    private boolean isTooCloseSession(LocalDateTime utcNow) {
+        final long minHours = 24;
+        return Duration.between(utcNow, LocalDateTime.of(date, startTime)).toHours() < minHours;
     }
 }
