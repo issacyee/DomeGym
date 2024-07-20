@@ -1,5 +1,6 @@
 package com.github.yizijian99.domegym.domain;
 
+import com.github.yizijian99.domegym.common.TimeRange;
 import com.github.yizijian99.domegym.exception.BusinessException;
 import com.github.yizijian99.domegym.exception.SessionError;
 import lombok.Builder;
@@ -26,9 +27,7 @@ public class Session {
 
     private LocalDate date;
 
-    private LocalTime startTime;
-
-    private LocalTime endTime;
+    private TimeRange time;
 
     public void reserveSpot(Participant participant) {
         if (participantIds.size() >= maxParticipants) {
@@ -51,6 +50,6 @@ public class Session {
 
     private boolean isTooCloseSession(LocalDateTime utcNow) {
         final long minHours = 24;
-        return Duration.between(utcNow, LocalDateTime.of(date, startTime)).toHours() < minHours;
+        return Duration.between(utcNow, LocalDateTime.of(date, time.getStart())).toHours() < minHours;
     }
 }

@@ -20,6 +20,9 @@ public class ParticipantFactory {
         if (Objects.isNull(userId)) {
             userId = ConstantsUser.ID;
         }
-        return new Participant(userId, id);
+        return Participant.builder()
+                .userId(userId)
+                .id(id)
+                .build();
     }
 }

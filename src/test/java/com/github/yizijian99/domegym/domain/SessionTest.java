@@ -43,8 +43,7 @@ public class SessionTest {
         // Create a session
         Session session = SessionFactory.createSession(
                 ConstantsSession.DATE,
-                ConstantsSession.START_TIME,
-                ConstantsSession.END_TIME,
+                ConstantsSession.TIME,
                 null,
                 null
         );

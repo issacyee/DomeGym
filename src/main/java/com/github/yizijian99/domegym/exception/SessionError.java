@@ -17,7 +17,11 @@ public enum SessionError implements IError {
     RESERVATION_NOT_FOUND(
             "Session.ReservationNotFound",
             "Reservation not found"
-    )
+    ),
+    SESSION_ALREADY_EXISTS_IN_ROOM(
+            "Session.SessionAlreadyExistsInRoom",
+            "Session already exists in room"
+    ),
     ;
 
     private final String code;

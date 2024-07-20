@@ -1,5 +1,6 @@
 package com.github.yizijian99.domegym.test.utils.sessions;
 
+import com.github.yizijian99.domegym.common.TimeRange;
 import com.github.yizijian99.domegym.domain.Session;
 import com.github.yizijian99.domegym.test.constants.ConstantsSession;
 import com.github.yizijian99.domegym.test.constants.ConstantsTrainer;
@@ -13,22 +14,22 @@ public class SessionFactory {
     private SessionFactory() {}
 
     public static Session createSession(Integer maxParticipants) {
-        return createSession(null, null, null, maxParticipants, null);
+        return createSession(null, null, maxParticipants, null);
+    }
+
+    public static Session createSession(Long id) {
+        return createSession(null, null, null, id);
     }
 
     public static Session createSession(LocalDate date,
-                                        LocalTime startTime,
-                                        LocalTime endTime,
+                                        TimeRange time,
                                         Integer maxParticipants,
                                         Long id) {
         if (Objects.isNull(date)) {
             date = ConstantsSession.DATE;
         }
-        if (Objects.isNull(startTime)) {
-            startTime = ConstantsSession.START_TIME;
-        }
-        if (Objects.isNull(endTime)) {
-            endTime = ConstantsSession.END_TIME;
+        if (Objects.isNull(time)) {
+            time = ConstantsSession.TIME;
         }
         if (Objects.isNull(maxParticipants)) {
             maxParticipants = ConstantsSession.MAX_PARTICIPANTS;
@@ -39,8 +40,7 @@ public class SessionFactory {
 
         return Session.builder()
                 .date(date)
-                .startTime(startTime)
-                .endTime(endTime)
+                .time(time)
                 .maxParticipants(maxParticipants)
                 .trainerId(ConstantsTrainer.ID)
                 .id(id)
