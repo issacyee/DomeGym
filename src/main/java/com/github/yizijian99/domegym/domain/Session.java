@@ -1,5 +1,7 @@
 package com.github.yizijian99.domegym.domain;
 
+import com.github.yizijian99.domegym.exception.BusinessException;
+import com.github.yizijian99.domegym.exception.SessionError;
 import lombok.Builder;
 import lombok.Data;
 
@@ -30,7 +32,7 @@ public class Session {
 
     public void reserveSpot(Participant participant) {
         if (participantIds.size() >= maxParticipants) {
-            throw new RuntimeException("Cannot have more reservations than participants.");
+            throw new BusinessException(SessionError.CANNOT_HAVE_MORE_RESERVATIONS_THAN_PARTICIPANTS);
         }
 
         participantIds.add(participant.getId());
@@ -39,11 +41,11 @@ public class Session {
     public void cancelReservation(Participant participant, IDateTimeProvider dateTimeProvider) {
         // session time - current time < 24 hours
         if (isTooCloseSession(dateTimeProvider.getUtcNow())) {
-            throw new RuntimeException("Cannot cancel reservation too close to session");
+            throw new BusinessException(SessionError.CANNOT_CANCEL_RESERVATION_TOO_CLOSE_TO_SESSION);
         }
 
         if (!participantIds.remove(participant.getId())) {
-            throw new RuntimeException("Reservation not found");
+            throw new BusinessException(SessionError.RESERVATION_NOT_FOUND);
         }
     }
 

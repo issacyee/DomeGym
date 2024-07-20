@@ -1,5 +1,7 @@
 package com.github.yizijian99.domegym.domain;
 
+import com.github.yizijian99.domegym.exception.BusinessException;
+import com.github.yizijian99.domegym.exception.SessionError;
 import com.github.yizijian99.domegym.test.constants.ConstantsSession;
 import com.github.yizijian99.domegym.test.utils.participants.ParticipantFactory;
 import com.github.yizijian99.domegym.test.utils.services.TestDateTimeProvider;
@@ -32,7 +34,7 @@ public class SessionTest {
 
         // Assert
         // Participant 2 reservation failed
-        Assertions.assertThrows(RuntimeException.class, executable);
+        Assertions.assertThrows(BusinessException.class, executable, SessionError.CANNOT_HAVE_MORE_RESERVATIONS_THAN_PARTICIPANTS.getCode());
     }
 
     @Test
@@ -59,6 +61,6 @@ public class SessionTest {
 
         // Assert
         // The cancellation fails
-        Assertions.assertThrowsExactly(RuntimeException.class, executable);
+        Assertions.assertThrowsExactly(BusinessException.class, executable, SessionError.CANNOT_CANCEL_RESERVATION_TOO_CLOSE_TO_SESSION.getCode());
     }
 }
