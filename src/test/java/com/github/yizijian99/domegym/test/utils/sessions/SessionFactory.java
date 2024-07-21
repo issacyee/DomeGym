@@ -3,15 +3,14 @@ package com.github.yizijian99.domegym.test.utils.sessions;
 import com.github.yizijian99.domegym.common.TimeRange;
 import com.github.yizijian99.domegym.domain.Session;
 import com.github.yizijian99.domegym.test.constants.ConstantsSession;
-import com.github.yizijian99.domegym.test.constants.ConstantsTrainer;
 import com.github.yizijian99.domegym.utils.id.IdGenerator;
 
 import java.time.LocalDate;
-import java.time.LocalTime;
 import java.util.Objects;
 
 public class SessionFactory {
-    private SessionFactory() {}
+    private SessionFactory() {
+    }
 
     public static Session createSession(Integer maxParticipants) {
         return createSession(null, null, maxParticipants, null);
@@ -38,12 +37,11 @@ public class SessionFactory {
             id = IdGenerator.generateId();
         }
 
-        return Session.builder()
-                .date(date)
-                .time(time)
-                .maxParticipants(maxParticipants)
-                .trainerId(ConstantsTrainer.ID)
-                .id(id)
-                .build();
+        Session session = new Session();
+        session.setDate(date);
+        session.setTime(time);
+        session.setMaxParticipants(maxParticipants);
+        session.setId(id);
+        return session;
     }
 }

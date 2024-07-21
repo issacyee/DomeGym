@@ -1,11 +1,10 @@
 package com.github.yizijian99.domegym.domain;
 
-import lombok.Builder;
-import lombok.Data;
+import com.github.yizijian99.domegym.common.Entity;
+import lombok.Getter;
 
-@Data
-@Builder
-public class Admin {
+@Getter
+public class Admin extends Entity {
     private Long userId;
 
     private Long subscriptionId;

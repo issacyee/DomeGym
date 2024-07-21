@@ -1,25 +1,23 @@
 package com.github.yizijian99.domegym.domain;
 
+import com.github.yizijian99.domegym.common.Entity;
 import com.github.yizijian99.domegym.exception.BusinessException;
 import com.github.yizijian99.domegym.exception.CommonError;
 import com.github.yizijian99.domegym.exception.ParticipantError;
-import lombok.Builder;
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.util.ArrayList;
 import java.util.List;
 
-@Data
-@Builder
-public class Participant {
-    private Long id;
-
+@Getter
+@Setter
+@SuppressWarnings("FieldMayBeFinal")
+public class Participant extends Entity {
     private Long userId;
 
-    @Builder.Default
     private Schedule schedule = Schedule.empty();
 
-    @Builder.Default
     private List<Long> sessionIds = new ArrayList<>(0);
 
     public void addToSchedule(Session session) {

@@ -3,12 +3,12 @@ package com.github.yizijian99.domegym.test.utils.rooms;
 import com.github.yizijian99.domegym.domain.Room;
 import com.github.yizijian99.domegym.test.constants.ConstantsGym;
 import com.github.yizijian99.domegym.test.constants.ConstantsRoom;
-import com.github.yizijian99.domegym.test.constants.ConstantsSubscriptions;
 
 import java.util.Objects;
 
 public class RoomFactory {
-    public RoomFactory() {}
+    public RoomFactory() {
+    }
 
     public static Room createRoom(Long id) {
         return createRoom(null, null, id);
@@ -18,7 +18,7 @@ public class RoomFactory {
                                   Long gymId,
                                   Long id) {
         if (Objects.isNull(maxDailySessions)) {
-            maxDailySessions = ConstantsSubscriptions.MAX_DAILY_SESSIONS_FREE_TIER;
+            maxDailySessions = ConstantsRoom.MAX_DAILY_SESSIONS_FREE_TIER;
         }
         if (Objects.isNull(gymId)) {
             gymId = ConstantsGym.ID;
@@ -27,10 +27,10 @@ public class RoomFactory {
             id = ConstantsRoom.ID;
         }
 
-        return Room.builder()
-                .maxDailySessions(maxDailySessions)
-                .gymId(gymId)
-                .id(id)
-                .build();
+        Room room = new Room();
+        room.setMaxDailySessions(maxDailySessions);
+        room.setGymId(gymId);
+        room.setId(id);
+        return room;
     }
 }

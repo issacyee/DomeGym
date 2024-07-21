@@ -1,26 +1,26 @@
 package com.github.yizijian99.domegym.domain;
 
+import com.github.yizijian99.domegym.common.Entity;
 import com.github.yizijian99.domegym.common.TimeRange;
 import com.github.yizijian99.domegym.exception.BusinessException;
 import com.github.yizijian99.domegym.exception.SessionError;
-import lombok.Builder;
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.time.Duration;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
-@Data
-@Builder
-public class Session {
+@Getter
+@Setter
+@SuppressWarnings("FieldMayBeFinal")
+public class Session extends Entity {
     private Long id;
 
     private Long trainerId;
 
-    @Builder.Default
     private List<Long> participantIds = new ArrayList<>(0);
 
     private Integer maxParticipants;

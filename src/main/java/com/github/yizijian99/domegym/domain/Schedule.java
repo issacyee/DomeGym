@@ -1,13 +1,13 @@
 package com.github.yizijian99.domegym.domain;
 
+import com.github.yizijian99.domegym.common.Entity;
 import com.github.yizijian99.domegym.common.TimeRange;
 import com.github.yizijian99.domegym.exception.BusinessException;
 import com.github.yizijian99.domegym.exception.CommonError;
 import com.github.yizijian99.domegym.utils.id.IdGenerator;
 import com.google.common.collect.Lists;
-import lombok.Builder;
-import lombok.Data;
-import org.apache.commons.collections4.CollectionUtils;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.time.LocalDate;
 import java.util.HashMap;
@@ -15,16 +15,15 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
-@Data
-@Builder
-public class Schedule {
-    @Builder.Default
+@Getter
+@Setter
+public class Schedule extends Entity {
     private Map<LocalDate, List<TimeRange>> calendar = new HashMap<>(0);
 
-    private Long id;
-
     public static Schedule empty() {
-        return Schedule.builder().id(IdGenerator.generateId()).build();
+        Schedule schedule = new Schedule();
+        schedule.id = IdGenerator.generateId();
+        return schedule;
     }
 
     public void bookTimeSlot(LocalDate date, TimeRange time) {

@@ -48,7 +48,7 @@ public class Snowflake {
         long timestamp = System.currentTimeMillis();
         if (timestamp < lastTimestamp) {
             throw new RuntimeException(String.format("Clock moved backwards. Refusing to generate id for %d milliseconds",
-                lastTimestamp - timestamp));
+                    lastTimestamp - timestamp));
         }
         if (lastTimestamp == timestamp) {
             sequence = (sequence + 1) & SEQUENCE_MASK;
@@ -60,9 +60,9 @@ public class Snowflake {
         }
         lastTimestamp = timestamp;
         return ((timestamp - START_POINT) << (int) (TIMESTAMP_SHIFT))
-            | (datacenterId << (int) DATA_CENTER_ID_SHIFT)
-            | workerId << (int) WORKER_ID_SHIFT
-            | sequence;
+                | (datacenterId << (int) DATA_CENTER_ID_SHIFT)
+                | workerId << (int) WORKER_ID_SHIFT
+                | sequence;
     }
 
     private long tilNextMillis() {

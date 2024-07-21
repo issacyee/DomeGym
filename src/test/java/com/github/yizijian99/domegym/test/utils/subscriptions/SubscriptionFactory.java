@@ -28,10 +28,10 @@ public class SubscriptionFactory {
             id = ConstantsSubscriptions.ID;
         }
 
-        return Subscription.builder()
-                .subscriptionType(subscriptionType)
-                .adminId(adminId)
-                .id(id)
-                .build();
+        Subscription subscription = new Subscription();
+        subscription.setSubscriptionType(subscriptionType);
+        subscription.setAdminId(adminId);
+        subscription.setId(id);
+        return subscription;
     }
 }

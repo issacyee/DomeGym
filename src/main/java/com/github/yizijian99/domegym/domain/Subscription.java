@@ -1,20 +1,21 @@
 package com.github.yizijian99.domegym.domain;
 
+import com.github.yizijian99.domegym.common.Entity;
 import com.github.yizijian99.domegym.constants.SubscriptionType;
 import com.github.yizijian99.domegym.exception.BusinessException;
 import com.github.yizijian99.domegym.exception.SubscriptionError;
-import lombok.Builder;
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.util.ArrayList;
 import java.util.List;
 
-@Data
-@Builder
-public class Subscription {
+@Getter
+@Setter
+@SuppressWarnings("FieldMayBeFinal")
+public class Subscription extends Entity {
     private Long id;
 
-    @Builder.Default
     private List<Long> gymIds = new ArrayList<>(0);
 
     private SubscriptionType subscriptionType;

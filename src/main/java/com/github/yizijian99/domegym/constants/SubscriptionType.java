@@ -9,5 +9,4 @@ public enum SubscriptionType {
     FREE,
     STARTER,
     PRO,
-    ;
 }

@@ -1,19 +1,18 @@
 package com.github.yizijian99.domegym.domain;
 
+import com.github.yizijian99.domegym.common.Entity;
 import com.github.yizijian99.domegym.exception.BusinessException;
 import com.github.yizijian99.domegym.exception.GymError;
-import lombok.Builder;
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.util.ArrayList;
 import java.util.List;
 
-@Data
-@Builder
-public class Gym {
-    private Long id;
-
-    @Builder.Default
+@Getter
+@Setter
+@SuppressWarnings("FieldMayBeFinal")
+public class Gym extends Entity {
     private List<Long> roomIds = new ArrayList<>(0);
 
     private Integer maxRooms;

@@ -13,7 +13,7 @@ public enum RoomError implements IError {
     CANNOT_HAVE_TWO_OR_MORE_OVERLAPPING_SESSIONS(
             "Room.CannotHaveTwoOrMoreOverlappingSessions",
             "A room cannot have two or more overlapping sessions"
-    )
+    ),
     ;
 
     private final String code;

@@ -7,7 +7,8 @@ import com.github.yizijian99.domegym.utils.id.IdGenerator;
 import java.util.Objects;
 
 public class GymFactory {
-    private GymFactory() {}
+    private GymFactory() {
+    }
 
     public static Gym createGym(Integer maxRooms) {
         return createGym(maxRooms, null);
@@ -22,10 +23,10 @@ public class GymFactory {
             id = IdGenerator.generateId();
         }
 
-        return Gym.builder()
-                .maxRooms(maxRooms)
-                .subscriptionId(ConstantsSubscriptions.ID)
-                .id(id)
-                .build();
+        Gym gym = new Gym();
+        gym.setMaxRooms(maxRooms);
+        gym.setSubscriptionId(ConstantsSubscriptions.ID);
+        gym.setId(id);
+        return gym;
     }
 }

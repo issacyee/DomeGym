@@ -11,8 +11,7 @@ public class TimeRange {
     private LocalTime start;
     private LocalTime end;
 
-    public boolean overlapsWith(TimeRange other)
-    {
+    public boolean overlapsWith(TimeRange other) {
         if (!start.isBefore(other.end))
             return false;
         return other.start.isBefore(end);
