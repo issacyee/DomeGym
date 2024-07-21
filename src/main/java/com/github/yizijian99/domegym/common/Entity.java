@@ -7,7 +7,7 @@ import java.util.Objects;
 
 @Getter
 @Setter
-public class Entity {
+public abstract class Entity {
     protected Long id;
 
     @Override

@@ -13,7 +13,8 @@ public enum TrainerError implements IError {
     CANNOT_HAVE_TWO_OR_MORE_OVERLAPPING_SESSIONS(
             "Trainer.CannotHaveTwoOrMoreOverlappingSessions",
             "Cannot have two or more overlapping sessions"
-    );
+    ),
+    ;
 
     private final String code;
     private final String desc;
