@@ -3,7 +3,7 @@ package com.github.yizijian99.domegym.domain.aggregate.room;
 import com.github.yizijian99.domegym.common.exception.BusinessException;
 import com.github.yizijian99.domegym.domain.aggregate.session.Session;
 import com.github.yizijian99.domegym.domain.aggregate.session.SessionError;
-import com.github.yizijian99.domegym.domain.common.Entity;
+import com.github.yizijian99.domegym.domain.common.AggregateRoot;
 import com.github.yizijian99.domegym.domain.common.entity.Schedule;
 import com.github.yizijian99.domegym.domain.common.error.CommonError;
 import lombok.Getter;
@@ -14,7 +14,7 @@ import java.util.Objects;
 
 @Getter
 @SuppressWarnings({"FieldMayBeFinal", "UnusedAssignment"})
-public class Room extends Entity {
+public class Room extends AggregateRoot {
     private Integer maxDailySessions;
 
     private Long gymId;

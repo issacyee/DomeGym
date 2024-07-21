@@ -2,7 +2,7 @@ package com.github.yizijian99.domegym.domain.aggregate.participant;
 
 import com.github.yizijian99.domegym.common.exception.BusinessException;
 import com.github.yizijian99.domegym.domain.aggregate.session.Session;
-import com.github.yizijian99.domegym.domain.common.Entity;
+import com.github.yizijian99.domegym.domain.common.AggregateRoot;
 import com.github.yizijian99.domegym.domain.common.entity.Schedule;
 import com.github.yizijian99.domegym.domain.common.error.CommonError;
 import lombok.Getter;
@@ -12,7 +12,7 @@ import java.util.List;
 
 @Getter
 @SuppressWarnings("FieldMayBeFinal")
-public class Participant extends Entity {
+public class Participant extends AggregateRoot {
     private Long userId;
 
     private Schedule schedule = Schedule.empty();

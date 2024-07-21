@@ -2,7 +2,7 @@ package com.github.yizijian99.domegym.domain.aggregate.subscription;
 
 import com.github.yizijian99.domegym.common.exception.BusinessException;
 import com.github.yizijian99.domegym.domain.aggregate.gym.Gym;
-import com.github.yizijian99.domegym.domain.common.Entity;
+import com.github.yizijian99.domegym.domain.common.AggregateRoot;
 import lombok.Getter;
 
 import java.util.ArrayList;
@@ -10,9 +10,7 @@ import java.util.List;
 
 @Getter
 @SuppressWarnings("FieldMayBeFinal")
-public class Subscription extends Entity {
-    private Long id;
-
+public class Subscription extends AggregateRoot {
     private List<Long> gymIds = new ArrayList<>(0);
 
     private SubscriptionType subscriptionType;

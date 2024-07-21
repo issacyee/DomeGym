@@ -1,11 +1,11 @@
 package com.github.yizijian99.domegym.domain.aggregate.admin;
 
-import com.github.yizijian99.domegym.domain.common.Entity;
+import com.github.yizijian99.domegym.domain.common.AggregateRoot;
 import lombok.Getter;
 
 @Getter
 @SuppressWarnings("FieldMayBeFinal")
-public class Admin extends Entity {
+public class Admin extends AggregateRoot {
     private Long userId;
 
     private Long subscriptionId;

@@ -2,7 +2,7 @@ package com.github.yizijian99.domegym.domain.aggregate.session;
 
 import com.github.yizijian99.domegym.common.exception.BusinessException;
 import com.github.yizijian99.domegym.domain.aggregate.participant.Participant;
-import com.github.yizijian99.domegym.domain.common.Entity;
+import com.github.yizijian99.domegym.domain.common.AggregateRoot;
 import com.github.yizijian99.domegym.domain.common.error.CommonError;
 import com.github.yizijian99.domegym.domain.common.interfaces.IDateTimeProvider;
 import com.github.yizijian99.domegym.domain.common.valueobject.TimeRange;
@@ -18,7 +18,7 @@ import java.util.Optional;
 
 @Getter
 @SuppressWarnings("FieldMayBeFinal")
-public class Session extends Entity {
+public class Session extends AggregateRoot {
     private Long trainerId;
 
     private List<Reservation> reservations = new ArrayList<>(0);

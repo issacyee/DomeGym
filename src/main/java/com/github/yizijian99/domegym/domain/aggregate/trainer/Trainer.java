@@ -2,7 +2,7 @@ package com.github.yizijian99.domegym.domain.aggregate.trainer;
 
 import com.github.yizijian99.domegym.common.exception.BusinessException;
 import com.github.yizijian99.domegym.domain.aggregate.session.Session;
-import com.github.yizijian99.domegym.domain.common.Entity;
+import com.github.yizijian99.domegym.domain.common.AggregateRoot;
 import com.github.yizijian99.domegym.domain.common.entity.Schedule;
 import com.github.yizijian99.domegym.domain.common.error.CommonError;
 import lombok.Getter;
@@ -13,9 +13,7 @@ import java.util.Objects;
 
 @Getter
 @SuppressWarnings({"FieldMayBeFinal", "UnusedAssignment"})
-public class Trainer extends Entity {
-    private Long id;
-
+public class Trainer extends AggregateRoot {
     private Long userId;
 
     private List<Long> sessionIds = new ArrayList<>(0);
