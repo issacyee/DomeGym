@@ -1,6 +1,6 @@
 package com.github.yizijian99.domegym.test.utils.common;
 
-import com.github.yizijian99.domegym.common.TimeRange;
+import com.github.yizijian99.domegym.domain.common.valueobject.TimeRange;
 
 import java.time.LocalTime;
 

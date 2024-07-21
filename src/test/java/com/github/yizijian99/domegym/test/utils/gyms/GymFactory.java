@@ -1,8 +1,8 @@
 package com.github.yizijian99.domegym.test.utils.gyms;
 
-import com.github.yizijian99.domegym.domain.Gym;
+import com.github.yizijian99.domegym.common.utils.id.IdGenerator;
+import com.github.yizijian99.domegym.domain.aggregate.gym.Gym;
 import com.github.yizijian99.domegym.test.constants.ConstantsSubscriptions;
-import com.github.yizijian99.domegym.utils.id.IdGenerator;
 
 import java.util.Objects;
 

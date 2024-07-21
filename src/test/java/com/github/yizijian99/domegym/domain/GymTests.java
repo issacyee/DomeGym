@@ -1,10 +1,12 @@
 package com.github.yizijian99.domegym.domain;
 
-import com.github.yizijian99.domegym.exception.BusinessException;
-import com.github.yizijian99.domegym.exception.GymError;
+import com.github.yizijian99.domegym.common.exception.BusinessException;
+import com.github.yizijian99.domegym.common.utils.id.IdGenerator;
+import com.github.yizijian99.domegym.domain.aggregate.gym.Gym;
+import com.github.yizijian99.domegym.domain.aggregate.gym.GymError;
+import com.github.yizijian99.domegym.domain.aggregate.room.Room;
 import com.github.yizijian99.domegym.test.utils.gyms.GymFactory;
 import com.github.yizijian99.domegym.test.utils.rooms.RoomFactory;
-import com.github.yizijian99.domegym.utils.id.IdGenerator;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.function.Executable;

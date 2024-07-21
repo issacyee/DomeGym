@@ -1,9 +1,9 @@
 package com.github.yizijian99.domegym.test.utils.sessions;
 
-import com.github.yizijian99.domegym.common.TimeRange;
-import com.github.yizijian99.domegym.domain.Session;
+import com.github.yizijian99.domegym.common.utils.id.IdGenerator;
+import com.github.yizijian99.domegym.domain.aggregate.session.Session;
+import com.github.yizijian99.domegym.domain.common.valueobject.TimeRange;
 import com.github.yizijian99.domegym.test.constants.ConstantsSession;
-import com.github.yizijian99.domegym.utils.id.IdGenerator;
 
 import java.time.LocalDate;
 import java.util.Objects;

@@ -1,6 +1,6 @@
 package com.github.yizijian99.domegym.test.utils.rooms;
 
-import com.github.yizijian99.domegym.domain.Room;
+import com.github.yizijian99.domegym.domain.aggregate.room.Room;
 import com.github.yizijian99.domegym.test.constants.ConstantsGym;
 import com.github.yizijian99.domegym.test.constants.ConstantsRoom;
 

@@ -1,6 +1,6 @@
 package com.github.yizijian99.domegym.test.constants;
 
-import com.github.yizijian99.domegym.utils.id.IdGenerator;
+import com.github.yizijian99.domegym.common.utils.id.IdGenerator;
 
 public class ConstantsUser {
     private ConstantsUser() {

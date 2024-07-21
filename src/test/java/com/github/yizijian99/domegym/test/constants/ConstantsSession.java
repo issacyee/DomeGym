@@ -1,7 +1,7 @@
 package com.github.yizijian99.domegym.test.constants;
 
-import com.github.yizijian99.domegym.common.TimeRange;
-import com.github.yizijian99.domegym.utils.id.IdGenerator;
+import com.github.yizijian99.domegym.common.utils.id.IdGenerator;
+import com.github.yizijian99.domegym.domain.common.valueobject.TimeRange;
 
 import java.time.LocalDate;
 import java.time.LocalTime;

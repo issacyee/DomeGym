@@ -1,6 +1,6 @@
 package com.github.yizijian99.domegym.test.utils.participants;
 
-import com.github.yizijian99.domegym.domain.Participant;
+import com.github.yizijian99.domegym.domain.aggregate.participant.Participant;
 import com.github.yizijian99.domegym.test.constants.ConstantsParticipant;
 import com.github.yizijian99.domegym.test.constants.ConstantsUser;
 

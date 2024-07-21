@@ -1,7 +1,7 @@
 package com.github.yizijian99.domegym.test.utils.subscriptions;
 
-import com.github.yizijian99.domegym.constants.SubscriptionType;
-import com.github.yizijian99.domegym.domain.Subscription;
+import com.github.yizijian99.domegym.domain.aggregate.subscription.Subscription;
+import com.github.yizijian99.domegym.domain.aggregate.subscription.SubscriptionType;
 import com.github.yizijian99.domegym.test.constants.ConstantsAdmin;
 import com.github.yizijian99.domegym.test.constants.ConstantsSubscriptions;
 

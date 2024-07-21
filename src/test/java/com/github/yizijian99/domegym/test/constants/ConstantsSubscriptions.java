@@ -1,7 +1,7 @@
 package com.github.yizijian99.domegym.test.constants;
 
-import com.github.yizijian99.domegym.constants.SubscriptionType;
-import com.github.yizijian99.domegym.utils.id.IdGenerator;
+import com.github.yizijian99.domegym.common.utils.id.IdGenerator;
+import com.github.yizijian99.domegym.domain.aggregate.subscription.SubscriptionType;
 
 public class ConstantsSubscriptions {
     private ConstantsSubscriptions() {

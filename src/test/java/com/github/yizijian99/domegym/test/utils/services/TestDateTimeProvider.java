@@ -1,6 +1,6 @@
 package com.github.yizijian99.domegym.test.utils.services;
 
-import com.github.yizijian99.domegym.domain.IDateTimeProvider;
+import com.github.yizijian99.domegym.domain.common.interfaces.IDateTimeProvider;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 
