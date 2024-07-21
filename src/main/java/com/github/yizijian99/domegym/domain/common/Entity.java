@@ -2,6 +2,7 @@ package com.github.yizijian99.domegym.domain.common;
 
 import com.github.yizijian99.domegym.common.utils.id.IdGenerator;
 import lombok.Getter;
+import org.apache.commons.lang3.ObjectUtils;
 
 import java.util.Objects;
 
@@ -10,10 +11,7 @@ public abstract class Entity {
     protected Long id;
 
     public Entity(Long id) {
-        if (Objects.isNull(id)) {
-            id = IdGenerator.generateId();
-        }
-        this.id = id;
+        this.id = ObjectUtils.getIfNull(id, IdGenerator::generateId);
     }
 
     @Override

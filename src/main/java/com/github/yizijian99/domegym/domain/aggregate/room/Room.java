@@ -7,6 +7,7 @@ import com.github.yizijian99.domegym.domain.common.AggregateRoot;
 import com.github.yizijian99.domegym.domain.common.entity.Schedule;
 import com.github.yizijian99.domegym.domain.common.error.CommonError;
 import lombok.Getter;
+import org.apache.commons.lang3.ObjectUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,10 +36,7 @@ public class Room extends AggregateRoot {
         super(id);
         this.maxDailySessions = maxDailySessions;
         this.gymId = gymId;
-        if (Objects.isNull(schedule)) {
-            schedule = Schedule.empty();
-        }
-        this.schedule = schedule;
+        this.schedule = ObjectUtils.getIfNull(schedule, Schedule::empty);
     }
 
     public void scheduleSession(Session session) {

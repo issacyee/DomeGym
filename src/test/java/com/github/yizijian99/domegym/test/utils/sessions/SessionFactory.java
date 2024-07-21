@@ -4,9 +4,9 @@ import com.github.yizijian99.domegym.common.utils.id.IdGenerator;
 import com.github.yizijian99.domegym.domain.aggregate.session.Session;
 import com.github.yizijian99.domegym.domain.common.valueobject.TimeRange;
 import com.github.yizijian99.domegym.test.constants.ConstantsSession;
+import org.apache.commons.lang3.ObjectUtils;
 
 import java.time.LocalDate;
-import java.util.Objects;
 
 public class SessionFactory {
     private SessionFactory() {
@@ -24,19 +24,11 @@ public class SessionFactory {
                                         TimeRange time,
                                         Integer maxParticipants,
                                         Long id) {
-        if (Objects.isNull(date)) {
-            date = ConstantsSession.DATE;
-        }
-        if (Objects.isNull(time)) {
-            time = ConstantsSession.TIME;
-        }
-        if (Objects.isNull(maxParticipants)) {
-            maxParticipants = ConstantsSession.MAX_PARTICIPANTS;
-        }
-        if (Objects.isNull(id)) {
-            id = IdGenerator.generateId();
-        }
-
-        return new Session(date, time, maxParticipants, id);
+        return new Session(
+                ObjectUtils.defaultIfNull(date, ConstantsSession.DATE),
+                ObjectUtils.defaultIfNull(time, ConstantsSession.TIME),
+                ObjectUtils.defaultIfNull(maxParticipants, ConstantsSession.MAX_PARTICIPANTS),
+                ObjectUtils.getIfNull(id, IdGenerator::generateId)
+        );
     }
 }

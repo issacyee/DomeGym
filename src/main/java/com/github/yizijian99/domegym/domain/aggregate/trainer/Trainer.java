@@ -6,10 +6,10 @@ import com.github.yizijian99.domegym.domain.common.AggregateRoot;
 import com.github.yizijian99.domegym.domain.common.entity.Schedule;
 import com.github.yizijian99.domegym.domain.common.error.CommonError;
 import lombok.Getter;
+import org.apache.commons.lang3.ObjectUtils;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 @Getter
 @SuppressWarnings({"FieldMayBeFinal", "UnusedAssignment"})
@@ -27,10 +27,7 @@ public class Trainer extends AggregateRoot {
     public Trainer(Long userId, Schedule schedule, Long id) {
         super(id);
         this.userId = userId;
-        if (Objects.isNull(schedule)) {
-            schedule = Schedule.empty();
-        }
-        this.schedule = schedule;
+        this.schedule = ObjectUtils.getIfNull(schedule, Schedule::empty);
     }
 
     public void addSessionToSchedule(Session session) {

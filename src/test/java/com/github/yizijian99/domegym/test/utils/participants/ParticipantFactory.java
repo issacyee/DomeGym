@@ -3,8 +3,7 @@ package com.github.yizijian99.domegym.test.utils.participants;
 import com.github.yizijian99.domegym.domain.aggregate.participant.Participant;
 import com.github.yizijian99.domegym.test.constants.ConstantsParticipant;
 import com.github.yizijian99.domegym.test.constants.ConstantsUser;
-
-import java.util.Objects;
+import org.apache.commons.lang3.ObjectUtils;
 
 public class ParticipantFactory {
     private ParticipantFactory() {
@@ -15,13 +14,9 @@ public class ParticipantFactory {
     }
 
     public static Participant createParticipant(Long id, Long userId) {
-        if (Objects.isNull(id)) {
-            id = ConstantsParticipant.ID;
-        }
-        if (Objects.isNull(userId)) {
-            userId = ConstantsUser.ID;
-        }
-
-        return new Participant(userId, id);
+        return new Participant(
+                ObjectUtils.defaultIfNull(userId, ConstantsUser.ID),
+                ObjectUtils.defaultIfNull(id, ConstantsParticipant.ID)
+        );
     }
 }

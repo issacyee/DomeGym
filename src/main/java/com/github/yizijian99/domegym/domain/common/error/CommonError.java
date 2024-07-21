@@ -11,6 +11,14 @@ public enum CommonError implements IError {
             "Common.Conflict",
             "Conflict"
     ),
+    START_AND_END_DATE_TIME_MUST_BE_ON_THE_SAME_DAY(
+            "Common.StartAndEndDateTimeMustBeOnTheSameDay",
+            "Start and end date time must be on the same day"
+    ),
+    END_TIME_MUST_BE_GREATER_THAN_THE_START_TIME(
+            "Common.EndTimeMustBeGreaterThanTheStartTime",
+            "End time must be greater than the start time"
+    ),
     ;
 
     private final String code;

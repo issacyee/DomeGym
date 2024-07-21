@@ -7,6 +7,7 @@ import com.github.yizijian99.domegym.domain.common.error.CommonError;
 import com.github.yizijian99.domegym.domain.common.valueobject.TimeRange;
 import com.google.common.collect.Lists;
 import lombok.Getter;
+import org.apache.commons.lang3.ObjectUtils;
 
 import java.time.LocalDate;
 import java.util.HashMap;
@@ -29,10 +30,7 @@ public class Schedule extends Entity {
 
     public Schedule(Map<LocalDate, List<TimeRange>> calendar, Long id) {
         super(id);
-        if (Objects.isNull(calendar)) {
-            calendar = new HashMap<>(0);
-        }
-        this.calendar = calendar;
+        this.calendar = ObjectUtils.getIfNull(calendar, HashMap::new);
     }
 
     public static Schedule empty() {
