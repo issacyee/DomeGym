@@ -3,6 +3,7 @@ package com.github.yizijian99.domegym.domain;
 import com.github.yizijian99.domegym.common.Entity;
 import com.github.yizijian99.domegym.common.TimeRange;
 import com.github.yizijian99.domegym.exception.BusinessException;
+import com.github.yizijian99.domegym.exception.CommonError;
 import com.github.yizijian99.domegym.exception.SessionError;
 import lombok.Getter;
 import lombok.Setter;
@@ -12,6 +13,8 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
+import java.util.Optional;
 
 @Getter
 @Setter
@@ -21,7 +24,7 @@ public class Session extends Entity {
 
     private Long trainerId;
 
-    private List<Long> participantIds = new ArrayList<>(0);
+    private List<Reservation> reservations = new ArrayList<>(0);
 
     private Integer maxParticipants;
 
@@ -30,11 +33,15 @@ public class Session extends Entity {
     private TimeRange time;
 
     public void reserveSpot(Participant participant) {
-        if (participantIds.size() >= maxParticipants) {
+        if (reservations.size() >= maxParticipants) {
             throw new BusinessException(SessionError.CANNOT_HAVE_MORE_RESERVATIONS_THAN_PARTICIPANTS);
         }
 
-        participantIds.add(participant.getId());
+        if (reservations.stream().anyMatch(reservation -> Objects.equals(reservation.getParticipantId(), participant.getId()))) {
+            throw new BusinessException(CommonError.CONFLICT);
+        }
+
+        reservations.add(new Reservation(participant.getId()));
     }
 
     public void cancelReservation(Participant participant, IDateTimeProvider dateTimeProvider) {
@@ -43,9 +50,15 @@ public class Session extends Entity {
             throw new BusinessException(SessionError.CANNOT_CANCEL_RESERVATION_TOO_CLOSE_TO_SESSION);
         }
 
-        if (!participantIds.remove(participant.getId())) {
+        Optional<Reservation> optional = reservations.stream()
+                .filter(reservation -> Objects.equals(reservation.getParticipantId(), participant.getId()))
+                .findFirst();
+        if (optional.isEmpty()) {
             throw new BusinessException(SessionError.RESERVATION_NOT_FOUND);
         }
+        Reservation reservation = optional.get();
+
+        reservations.remove(reservation);
     }
 
     private boolean isTooCloseSession(LocalDateTime utcNow) {

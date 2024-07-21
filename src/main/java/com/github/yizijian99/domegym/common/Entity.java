@@ -1,12 +1,16 @@
 package com.github.yizijian99.domegym.common;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.Objects;
 
 @Getter
 @Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public abstract class Entity {
     protected Long id;
 
