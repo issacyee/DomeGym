@@ -22,9 +22,6 @@ public class ParticipantFactory {
             userId = ConstantsUser.ID;
         }
 
-        Participant participant = new Participant();
-        participant.setUserId(userId);
-        participant.setId(id);
-        return participant;
+        return new Participant(userId, id);
     }
 }

@@ -28,10 +28,6 @@ public class SubscriptionFactory {
             id = ConstantsSubscriptions.ID;
         }
 
-        Subscription subscription = new Subscription();
-        subscription.setSubscriptionType(subscriptionType);
-        subscription.setAdminId(adminId);
-        subscription.setId(id);
-        return subscription;
+        return new Subscription(subscriptionType, adminId, id);
     }
 }

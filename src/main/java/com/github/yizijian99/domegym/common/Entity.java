@@ -1,18 +1,20 @@
 package com.github.yizijian99.domegym.common;
 
-import lombok.AllArgsConstructor;
+import com.github.yizijian99.domegym.utils.id.IdGenerator;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 import java.util.Objects;
 
 @Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
 public abstract class Entity {
     protected Long id;
+
+    public Entity(Long id) {
+        if (Objects.isNull(id)) {
+            id = IdGenerator.generateId();
+        }
+        this.id = id;
+    }
 
     @Override
     public boolean equals(Object o) {

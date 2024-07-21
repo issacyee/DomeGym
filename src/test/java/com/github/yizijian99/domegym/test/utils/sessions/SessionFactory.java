@@ -37,11 +37,6 @@ public class SessionFactory {
             id = IdGenerator.generateId();
         }
 
-        Session session = new Session();
-        session.setDate(date);
-        session.setTime(time);
-        session.setMaxParticipants(maxParticipants);
-        session.setId(id);
-        return session;
+        return new Session(date, time, maxParticipants, id);
     }
 }

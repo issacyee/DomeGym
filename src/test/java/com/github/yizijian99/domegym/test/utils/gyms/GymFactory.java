@@ -23,10 +23,6 @@ public class GymFactory {
             id = IdGenerator.generateId();
         }
 
-        Gym gym = new Gym();
-        gym.setMaxRooms(maxRooms);
-        gym.setSubscriptionId(ConstantsSubscriptions.ID);
-        gym.setId(id);
-        return gym;
+        return new Gym(maxRooms, ConstantsSubscriptions.ID, id);
     }
 }

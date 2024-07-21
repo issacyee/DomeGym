@@ -27,10 +27,6 @@ public class RoomFactory {
             id = ConstantsRoom.ID;
         }
 
-        Room room = new Room();
-        room.setMaxDailySessions(maxDailySessions);
-        room.setGymId(gymId);
-        room.setId(id);
-        return room;
+        return new Room(maxDailySessions, gymId, null, id);
     }
 }

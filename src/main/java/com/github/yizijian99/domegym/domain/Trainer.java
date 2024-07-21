@@ -5,14 +5,13 @@ import com.github.yizijian99.domegym.exception.BusinessException;
 import com.github.yizijian99.domegym.exception.CommonError;
 import com.github.yizijian99.domegym.exception.TrainerError;
 import lombok.Getter;
-import lombok.Setter;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 @Getter
-@Setter
-@SuppressWarnings("FieldMayBeFinal")
+@SuppressWarnings({"FieldMayBeFinal", "UnusedAssignment"})
 public class Trainer extends Entity {
     private Long id;
 
@@ -21,6 +20,19 @@ public class Trainer extends Entity {
     private List<Long> sessionIds = new ArrayList<>(0);
 
     private Schedule schedule = Schedule.empty();
+
+    public Trainer(Long userId, Schedule schedule) {
+        this(userId, schedule, null);
+    }
+
+    public Trainer(Long userId, Schedule schedule, Long id) {
+        super(id);
+        this.userId = userId;
+        if (Objects.isNull(schedule)) {
+            schedule = Schedule.empty();
+        }
+        this.schedule = schedule;
+    }
 
     public void addSessionToSchedule(Session session) {
         if (sessionIds.contains(session.getId())) {

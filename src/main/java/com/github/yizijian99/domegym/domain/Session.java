@@ -6,7 +6,6 @@ import com.github.yizijian99.domegym.exception.BusinessException;
 import com.github.yizijian99.domegym.exception.CommonError;
 import com.github.yizijian99.domegym.exception.SessionError;
 import lombok.Getter;
-import lombok.Setter;
 
 import java.time.Duration;
 import java.time.LocalDate;
@@ -17,11 +16,8 @@ import java.util.Objects;
 import java.util.Optional;
 
 @Getter
-@Setter
 @SuppressWarnings("FieldMayBeFinal")
 public class Session extends Entity {
-    private Long id;
-
     private Long trainerId;
 
     private List<Reservation> reservations = new ArrayList<>(0);
@@ -31,6 +27,18 @@ public class Session extends Entity {
     private LocalDate date;
 
     private TimeRange time;
+
+    public Session(LocalDate date, TimeRange time, Integer maxParticipants, Long trainerId) {
+        this(date, time, maxParticipants, trainerId, null);
+    }
+
+    public Session(LocalDate date, TimeRange time, Integer maxParticipants, Long trainerId, Long id) {
+        super(id);
+        this.date = date;
+        this.time = time;
+        this.maxParticipants = maxParticipants;
+        this.trainerId = trainerId;
+    }
 
     public void reserveSpot(Participant participant) {
         if (reservations.size() >= maxParticipants) {

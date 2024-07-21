@@ -5,13 +5,11 @@ import com.github.yizijian99.domegym.constants.SubscriptionType;
 import com.github.yizijian99.domegym.exception.BusinessException;
 import com.github.yizijian99.domegym.exception.SubscriptionError;
 import lombok.Getter;
-import lombok.Setter;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Getter
-@Setter
 @SuppressWarnings("FieldMayBeFinal")
 public class Subscription extends Entity {
     private Long id;
@@ -21,6 +19,16 @@ public class Subscription extends Entity {
     private SubscriptionType subscriptionType;
 
     private Long adminId;
+
+    public Subscription(SubscriptionType subscriptionType, Long adminId) {
+        this(subscriptionType, adminId, null);
+    }
+
+    public Subscription(SubscriptionType subscriptionType, Long adminId, Long id) {
+        super(id);
+        this.subscriptionType = subscriptionType;
+        this.adminId = adminId;
+    }
 
     public Integer getMaxGyms() {
         switch (subscriptionType) {

@@ -22,9 +22,6 @@ public class TrainerFactory {
             id = ConstantsTrainer.ID;
         }
 
-        Trainer trainer = new Trainer();
-        trainer.setUserId(userId);
-        trainer.setId(id);
-        return trainer;
+        return new Trainer(userId, null, id);
     }
 }
